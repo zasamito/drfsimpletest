@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>{% if form.instance.pk %}Edit Project{% else %}Crear Proyecto{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            {% if form.instance.pk %}Save Changes{% else %}Crear Proyecto{% endif %}
+        </button>
+    </form>
+    <a href="{% url 'project_list' %}" class="btn btn-secondary mt-3">Volver a la Lista de Proyectos</a>
+{% endblock %}
